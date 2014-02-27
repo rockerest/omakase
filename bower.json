@@ -1,0 +1,33 @@
+{
+  "name": "req-la-carte",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rockerest/req-la-carte",
+  "authors": [
+    "rockerest <admin@rockerest.com>"
+  ],
+  "description": "Quickstart A La Carte JavaScript Application",
+  "main": "index.html",
+  "keywords": [
+    "requirejs",
+    "underscore",
+    "template",
+    "amd",
+    "boilerplate"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "underscore": "~1.6.0",
+    "require": "requirejs#~2.1.11",
+    "sammy": "~0.7.5",
+    "jquery": "~2.1.0"
+  }
+}
