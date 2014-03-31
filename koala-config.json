@@ -11,7 +11,8 @@
     // Add the ignore rules that Koala will not search them.
     // e.g. ["*.json", "*.txt", "test", "path/libs"]
     "ignores": [
-        "vendor/"
+        "vendor/",
+        "js/"
     ],
 
     // Compile options of Sass.

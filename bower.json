@@ -28,6 +28,7 @@
     "underscore": "~1.6.0",
     "require": "requirejs#~2.1.11",
     "sammy": "~0.7.5",
-    "jquery": "~2.1.0"
+    "jquery": "~2.1.0",
+    "font-awesome": "~4.0.3"
   }
 }
