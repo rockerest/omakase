@@ -29,6 +29,7 @@
     "require": "requirejs#~2.1.11",
     "sammy": "~0.7.5",
     "jquery": "~2.1.0",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "moment": "~2.5.1"
   }
 }
