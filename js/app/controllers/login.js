@@ -1,6 +1,6 @@
 define(
-    ["page"],
-    function( Page ){
+    ["page", "bindings/login"],
+    function( Page, Bindings ){
         var Login = function(){
             this.root = "body div#main";
         };
@@ -13,7 +13,7 @@ define(
                 "mechanism": "output",
                 "template": "content/login/home.html",
                 "data": {},
-                "bind": function(){}
+                "bind": Bindings.home
             });
         };
 
