@@ -10,7 +10,7 @@ define(
         };
 
         LoginEvents.prototype.registerHomeEvents = function(){
-            this.binder( "upd8me.click.login.home.authenticate", function( e ){
+            this.binder( "rlc.click.login.home.authenticate", function( e ){
                 var clicked = e.target,
                     $clicked = $( clicked ),
                     data = {
