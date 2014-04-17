@@ -7,12 +7,13 @@ define(
 
         Error.prototype = new Page();
 
-        Error.prototype.def = function( data ){
+        Error.prototype.default = function( data ){
             this.render({
+                "title": data.title,
                 "node": this.root,
                 "mechanism": "output",
                 "template": "content/error/default.html",
-                "data": data,
+                "data": data.template,
                 "bind": function(){}
             });
         };

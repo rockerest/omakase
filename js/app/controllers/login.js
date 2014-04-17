@@ -9,6 +9,7 @@ define(
 
         Login.prototype.home = function(){
             this.render({
+                "title": "Log In",
                 "node": this.root,
                 "mechanism": "output",
                 "template": "content/login/home.html",
