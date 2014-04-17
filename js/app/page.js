@@ -21,6 +21,21 @@ define(
             if( typeof options.bind === "function" ){
                 renderer.bind( options.bind );
             }
+
+            this.setTitle( options.title );
+        };
+
+        Page.prototype.setTitle = function( title ){
+            var suffix = "Req-La-Carte";
+
+            if( !title ){
+                title = suffix;
+            }
+            else{
+                title = title + " :: " + suffix;
+            }
+
+            document.title = title;
         };
 
         return Page;
