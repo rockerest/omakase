@@ -1,6 +1,6 @@
 define(
-    ["require", "module", "sammy", "underscore", "render"],
-    function( require, module, Sammy, _, Render ){
+    ["require", "module", "sammy", "underscore", "render", "components/header"],
+    function( require, module, Sammy, _, Render, Header ){
         var Router = {},
             r = window.rlc.config.routers,
             app = new Sammy(),
@@ -9,7 +9,7 @@ define(
 
         Router.start = function(){
             var tmpl = new Render( "content/template.html" ),
-                head = new Render( "content/header.html" );
+                head = new Header();
 
             tmpl
                 .generate( {} ) // body-specific data
@@ -17,8 +17,8 @@ define(
                 .bind( function(){
                     head
                         .generate( {} ) // header-specific data
-                        .output( "body > header" )
-                        .bind( function(){} ); // header bindings
+                        .output()
+                        .bind();
                 });
 
             Router.registerRoutes();
@@ -33,7 +33,8 @@ define(
                 require(
                     ["routers/" + name],
                     function( r ){
-                        r.register( data );
+                        var R = new r( data );
+                        R.register();
                         routerCount++;
                     }
                 );
