@@ -28,18 +28,18 @@ define(
 
             if( this.controllerRequiresAuthentication() ){
                 if( this.actionRequiresAuthentication( action ) ){
-                    allow();
+                    return allow();
                 }
                 else{
-                    this.user.isAuthenticated() ? allow() : disallow();
+                    return this.user.isAuthenticated() ? allow() : disallow();
                 }
             }
             else{
                 if( this.actionRequiresAuthentication( action ) ){
-                    this.user.isAuthenticated() ? allow() : disallow();
+                    return this.user.isAuthenticated() ? allow() : disallow();
                 }
                 else{
-                    allow();
+                    return allow();
                 }
             }
         };
