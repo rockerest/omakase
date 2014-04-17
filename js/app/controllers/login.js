@@ -19,4 +19,4 @@ define(
 
         return Login;
     }
-)
+);

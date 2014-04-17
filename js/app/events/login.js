@@ -24,4 +24,4 @@ define(
 
         return LoginEvents;
     }
-)
+);
