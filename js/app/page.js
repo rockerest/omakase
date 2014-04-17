@@ -1,10 +1,13 @@
 define(
-    ["underscore", "render"],
-    function( _, Render ){
+    ["underscore", "render", "components/header"],
+    function( _, Render, Header ){
         var Page = function(){};
 
         Page.prototype.render = function( options ){
             var renderer = new Render( options.template );
+
+            this.setTitle( options.title );
+            this.renderHeader();
 
             renderer
                 .generate( options.data );
@@ -36,6 +39,13 @@ define(
             }
 
             document.title = title;
+        };
+
+        Page.prototype.renderHeader = function(){
+            var data = this.data ? this.data.application || undefined : undefined,
+                head = new Header( data );
+
+            head.render();
         };
 
         return Page;

@@ -1,6 +1,6 @@
 define(
-    ["require", "module", "sammy", "underscore", "render", "event", "components/header"],
-    function( require, module, Sammy, _, Render, Event, Header ){
+    ["require", "module", "sammy", "underscore", "render", "event", "components/header", "security"],
+    function( require, module, Sammy, _, Render, Event, Header, Security ){
         var Router = {},
             routes = window.rlc.config.routers,
             app = new Sammy(),
@@ -19,10 +19,7 @@ define(
                 .generate( {} ) // body-specific data
                 .output( "body" )
                 .bind( function(){
-                    head
-                        .generate( {} ) // header-specific data
-                        .output()
-                        .bind();
+                    head.render();
                 });
 
             Router.registerRoutes();
@@ -37,6 +34,10 @@ define(
                 this.runRoute( "get", "#/error/404", {"triggeringLocation": this.last_location[1]} );
                 return false;
             };
+
+            app.get( "#/logout[/]?", function(){
+                Security.logOut();
+            });
 
             _( routes ).each( function( name, i ){
                 require(
