@@ -17,6 +17,7 @@ requirejs.config({
     "config":{
         "config":{
             "routers":[
+                "error",
                 "login"
             ],
             "events":[
