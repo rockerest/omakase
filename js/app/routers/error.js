@@ -30,6 +30,9 @@ define(
                     }
                 };
 
+                // trigger the filter to check for authentication
+                self.filter();
+
                 data = self.extend( self.data, data );
 
                 page.default( data );
