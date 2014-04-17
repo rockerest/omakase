@@ -1,12 +1,12 @@
 define(
-    [ "underscore", "objects/user" ],
-    function( _, User ){
+    [ "security", "objects/user" ],
+    function( Security, User ){
         var RouterBase = function(){
                 this.dmz = true;
                 this.blacklist = [];
                 this.whitelist = [];
-                this.user = new User();
             },
+            User = new User(),
             recursiveObjectMerge;
 
         RouterBase.prototype.controllerRequiresAuthentication = function(){
@@ -23,21 +23,30 @@ define(
         };
 
         RouterBase.prototype.filter = function( allow, disallow, action ){
+            var self = this,
+                populate = function(){
+                    var user = User.getAuthentication();
+
+                    self.data = self.extend( self.data, { "application": { user: user } } );
+                };
+
             allow       = allow     || function(){};
             disallow    = disallow  || function(){};
             action      = action    || "----------";
+
+            populate();
 
             if( this.controllerRequiresAuthentication() ){
                 if( this.actionRequiresAuthentication( action ) ){
                     return allow();
                 }
                 else{
-                    return this.user.isAuthenticated() ? allow() : disallow();
+                    return Security.userIsAuthenticated() ? allow() : disallow();
                 }
             }
             else{
                 if( this.actionRequiresAuthentication( action ) ){
-                    return this.user.isAuthenticated() ? allow() : disallow();
+                    return Security.userIsAuthenticated() ? allow() : disallow();
                 }
                 else{
                     return allow();

@@ -1,6 +1,6 @@
 define(
-    ["event", "jquery", "transfer", "cookies"],
-    function( Event, $, Transfer, Cookies ){
+    ["event", "jquery", "transfer", "security"],
+    function( Event, $, Transfer, Security ){
         var LoginEvents = function(){},
             Transfer = new Transfer();
 
@@ -23,7 +23,7 @@ define(
                     Transfer.requestAuthentication( credentials )
                 )
                 .done( function( data, stat, x ){
-                    Cookies( "authentication", 1 );
+                    Security.logIn( data );
                     window.location = "/#/dashboard";
                 })
                 .fail( function( x, stat, t ){

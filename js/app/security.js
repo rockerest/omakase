@@ -5,6 +5,8 @@ define(
             User = new User();
 
         Security.logIn = function( authenticationResponse ){
+            authenticationResponse = JSON.parse( authenticationResponse );
+
             if( authenticationResponse.user ){
                 Cookies( "authentication", JSON.stringify( authenticationResponse.user ) );
             }
