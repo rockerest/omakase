@@ -3,5 +3,11 @@
     <span>&nbsp;&nbsp;Req-La-Carte</span>
 </div>
 <div id="account-container">
+<% if( typeof user !== "undefined" ){ %>
+    <!-- User stuff -->
+    <%= user.identity %> | <a href="#/logout/">Log Out</a>
+<% }
+else{ %>
     Welcome!
+<% } %>
 </div>
