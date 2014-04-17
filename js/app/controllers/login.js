@@ -7,7 +7,9 @@ define(
 
         Login.prototype = new Page();
 
-        Login.prototype.home = function(){
+        Login.prototype.home = function( data ){
+            this.data = data;
+
             this.render({
                 "title": "Log In",
                 "node": this.root,

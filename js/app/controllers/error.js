@@ -8,6 +8,8 @@ define(
         Error.prototype = new Page();
 
         Error.prototype.default = function( data ){
+            this.data = data;
+
             this.render({
                 "title": data.title,
                 "node": this.root,
