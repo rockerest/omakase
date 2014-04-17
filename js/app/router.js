@@ -1,8 +1,8 @@
 define(
-    ["require", "module", "sammy", "underscore", "render", "components/header"],
-    function( require, module, Sammy, _, Render, Header ){
+    ["require", "module", "sammy", "underscore", "render", "event", "components/header"],
+    function( require, module, Sammy, _, Render, Event, Header ){
         var Router = {},
-            r = window.rlc.config.routers,
+            routes = window.rlc.config.routers,
             app = new Sammy(),
             routerCount = 0;
 
@@ -10,6 +10,10 @@ define(
         Router.start = function(){
             var tmpl = new Render( "content/template.html" ),
                 head = new Header();
+
+            Event.bind( "rlc.core.routing.load.done", function(){
+                app.run( '#/' );
+            });
 
             tmpl
                 .generate( {} ) // body-specific data
@@ -29,27 +33,25 @@ define(
                     "sammy": app
                 };
 
-            _( r ).each( function( name, i ){
+            app.notFound = function(){
+                this.runRoute( "get", "#/error/404", {"triggeringLocation": this.last_location[1]} );
+                return false;
+            };
+
+            _( routes ).each( function( name, i ){
                 require(
                     ["routers/" + name],
                     function( r ){
                         var R = new r( data );
                         R.register();
                         routerCount++;
+
+                        if( routerCount === _( routes ).size() ){
+                            Event.fire( document, "rlc.core.routing.load.done" );
+                        }
                     }
                 );
             });
-
-            Router.watch();
-        };
-
-        Router.watch = function(){
-            if( routerCount === _( r ).size() ){
-                app.run( '#/' );
-            }
-            else{
-                setTimeout( function(){ Router.watch(); }, 10 );
-            }
         };
 
         return Router;
