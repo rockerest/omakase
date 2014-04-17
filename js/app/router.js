@@ -2,7 +2,7 @@ define(
     ["require", "module", "sammy", "underscore", "render"],
     function( require, module, Sammy, _, Render ){
         var Router = {},
-            pkg = module.config(),
+            r = window.rlc.config.routers,
             app = new Sammy(),
             routerCount = 0;
 
@@ -29,7 +29,7 @@ define(
                     "sammy": app
                 };
 
-            _( pkg.controllers ).each( function( name, i ){
+            _( r ).each( function( name, i ){
                 require(
                     ["routers/" + name],
                     function( r ){
@@ -43,7 +43,7 @@ define(
         };
 
         Router.watch = function(){
-            if( routerCount === _( pkg.controllers ).size() ){
+            if( routerCount === _( r ).size() ){
                 app.run( '#/' );
             }
             else{
@@ -53,4 +53,4 @@ define(
 
         return Router;
     }
-)
+);

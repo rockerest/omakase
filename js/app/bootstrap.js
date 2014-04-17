@@ -14,13 +14,11 @@ requirejs.config({
         }
     },
     "config":{
-        "router":{
-            "controllers":[
+        "config":{
+            "routers":[
                 "login"
-            ]
-        },
-        "event":{
-            "controllers":[
+            ],
+            "events":[
                 "login"
             ]
         }
@@ -28,7 +26,7 @@ requirejs.config({
 });
 
 require(
-    ["jquery", "init"],
+    ["jquery", "init", "config"],
     function( $, Init ){
         $(function(){
             Init.startApp();

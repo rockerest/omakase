@@ -1,7 +1,8 @@
 define(
-    ["module", "require", "underscore"],
-    function( module, require, _ ){
-        var Events = {};
+    ["require", "underscore"],
+    function( require, _ ){
+        var Events = {},
+            e = window.rlc.config.events;
 
         Events.startup = function(){
             Events.watch();
@@ -17,7 +18,7 @@ define(
         };
 
         Events.watch = function(){
-            _( module.config().controllers ).each( function( co ){
+            _( e ).each( function( co ){
                 require(
                     ["events/" + co],
                     function( c ){
