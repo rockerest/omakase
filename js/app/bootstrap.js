@@ -19,6 +19,7 @@ requirejs.config({
                 "login"
             ],
             "events":[
+                "header",
                 "login"
             ]
         }
