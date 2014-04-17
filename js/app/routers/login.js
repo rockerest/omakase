@@ -4,7 +4,7 @@ define(
         var Login = function( data ){
                 this.data = data;
                 this.dmz = true;
-                this.blacklist = [ "default" ];
+                this.blacklist = [ "home" ];
             },
             page = new Controller();
 
