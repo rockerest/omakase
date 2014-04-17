@@ -1,6 +1,6 @@
 define(
     ["routers/base", "controllers/login"],
-    function( Base, Controller, User ){
+    function( Base, Controller ){
         var Login = function( data ){
                 this.data = data;
                 this.dmz = true;
