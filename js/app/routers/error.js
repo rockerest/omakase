@@ -10,7 +10,11 @@ define(
         Error.prototype = new Base();
 
         Error.prototype.register = function(){
+            var self = this;
+
             this.data.sammy.get('#/error/:error(/)?', function( context ){
+                var data;
+
                 switch( context.params.error ){
                     case "404":
                     default:
@@ -18,7 +22,17 @@ define(
                         break;
                 }
 
-                page.def( { attempt: context.params.triggeringLocation } );
+                data = {
+                    "title": title,
+                    "params": context.params,
+                    "template":{
+                        attempt: context.params.triggeringLocation
+                    }
+                };
+
+                data = self.extend( self.data, data );
+
+                page.default( data );
             });
         };
 
