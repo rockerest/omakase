@@ -11,19 +11,20 @@ define(
         Login.prototype = new Base();
 
         Login.prototype.register = function(){
-            this.registerDefault( this.data );
+            this.registerHome( this.data );
         };
 
-        Login.prototype.registerDefault = function( data ){
+        Login.prototype.registerHome = function( data ){
             var self = this;
 
             data.sammy.before( "#/", function( context ){
-                self.filter(
+                return self.filter(
                     function(){
                         context.redirect( "#/dashboard/" );
+                        return false;
                     },
                     undefined,
-                    "default"
+                    "home"
                 );
             });
 
