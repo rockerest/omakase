@@ -3,10 +3,15 @@ define(
     function( Cookies ){
         var User = function(){};
 
-        User.prototype.isAuthenticated = function(){
+        User.prototype.getAuthentication = function(){
             var auth = Cookies( "authentication" );
 
-            return auth == 1;
+            if( auth ){
+                return JSON.parse( auth );
+            }
+            else{
+                return undefined;
+            }
         };
 
         return User;
