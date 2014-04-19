@@ -10,7 +10,7 @@ define(
         };
 
         HeaderEvents.prototype.registerHeaderEvents = function(){
-            this.binder( "rlc.click.header.logo", function( e ){
+            this.binder( "omakase.click.header.logo", function( e ){
                 window.location = "/#/";
             });
         };

@@ -2,7 +2,7 @@ define(
     ["storage", "moment"],
     function( Storage, moment ){
         var Data = function(){},
-            base = "window.req-la-carte.data";
+            base = "window.omakase.data";
 
         Data.prototype = new Storage();
 

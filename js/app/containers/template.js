@@ -2,7 +2,7 @@ define(
     ["storage"],
     function( Storage ){
         var Template = function(){},
-            base = "window.req-la-carte.templates";
+            base = "window.omakase.templates";
 
         Template.prototype = new Storage();
 

@@ -11,7 +11,7 @@ define(
         };
 
         LoginEvents.prototype.registerHomeEvents = function(){
-            this.binder( "rlc.click.login.home.authenticate", function( e ){
+            this.binder( "omakase.click.login.home.authenticate", function( e ){
                 var clicked = e.target,
                     $clicked = $( clicked ),
                     credentials = {

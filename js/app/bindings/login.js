@@ -5,7 +5,7 @@ define(
 
         LoginBinding.home = function(){
             $( 'button[type="submit"]' ).on( "click", function( e ){
-                Event.fire( this, "rlc.click.login.home.authenticate" );
+                Event.fire( this, "omakase.click.login.home.authenticate" );
                 return false;
             });
         };

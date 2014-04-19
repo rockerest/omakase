@@ -2,7 +2,7 @@ define(
     ["require", "underscore"],
     function( require, _ ){
         var Events = {},
-            e = window.rlc.config.events;
+            e = window.omakase.config.events;
 
         Events.startup = function(){
             Events.watch();

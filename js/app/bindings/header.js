@@ -5,7 +5,7 @@ define(
 
         HeaderBinding.header = function(){
             $( '#logo-container' ).on( "click", function( e ){
-                Event.fire( this, "rlc.click.header.logo" );
+                Event.fire( this, "omakase.click.header.logo" );
                 return false;
             });
         };

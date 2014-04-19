@@ -29,7 +29,7 @@ define(
         };
 
         Page.prototype.setTitle = function( title ){
-            var suffix = "Req-La-Carte";
+            var suffix = "Omakase";
 
             if( !title ){
                 title = suffix;

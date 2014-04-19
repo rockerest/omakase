@@ -2,7 +2,7 @@ define(
     ["require", "module", "sammy", "underscore", "render", "event", "components/header", "security"],
     function( require, module, Sammy, _, Render, Event, Header, Security ){
         var Router = {},
-            routes = window.rlc.config.routers,
+            routes = window.omakase.config.routers,
             app = new Sammy(),
             routerCount = 0;
 
@@ -11,7 +11,7 @@ define(
             var tmpl = new Render( "content/template.html" ),
                 head = new Header();
 
-            Event.bind( "rlc.core.routing.load.done", function(){
+            Event.bind( "omakase.core.routing.load.done", function(){
                 app.run( '#/' );
             });
 
@@ -48,7 +48,7 @@ define(
                         routerCount++;
 
                         if( routerCount === _( routes ).size() ){
-                            Event.fire( document, "rlc.core.routing.load.done" );
+                            Event.fire( document, "omakase.core.routing.load.done" );
                         }
                     }
                 );
