@@ -8,12 +8,16 @@ define(
             Events.watch();
         };
 
-        Events.bind = function( name, callback ){
-            if( document.attachEvent ){
-                document.attachEvent( name, callback );
+        Events.bind = function( name, callback, object ){
+            if( !object || !(object instanceof EventTarget) ){
+                object = document;
+            }
+
+            if( object.attachEvent ){
+                object.attachEvent( name, callback );
             }
             else{
-                document.addEventListener( name, callback, false );
+                object.addEventListener( name, callback, false );
             }
         };
 
@@ -29,7 +33,7 @@ define(
             });
         };
 
-        Events.fire = function( target, name, params ){
+        Events.fire = function( target, name, data, params ){
             if( !params ){
                 params = {
                     "bubbles": true
@@ -37,6 +41,7 @@ define(
             }
 
             var e = new Event( name, params );
+            e.data = data;
             target.dispatchEvent( e );
         };
 
