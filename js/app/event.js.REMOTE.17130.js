@@ -1,8 +1,7 @@
 define(
     ["require", "underscore", "jquery"],
     function( require, _, $ ){
-        var Events = {},
-            e = window.omakase.config.events;
+        var Events = {};
 
         Events.startup = function(){
             Events.watch();
