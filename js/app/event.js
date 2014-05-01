@@ -1,6 +1,6 @@
 define(
-    ["require", "underscore"],
-    function( require, _ ){
+    ["require", "underscore", "jquery"],
+    function( require, _, $ ){
         var Events = {},
             e = window.omakase.config.events;
 
@@ -13,12 +13,15 @@ define(
                 object = document;
             }
 
-            if( object.attachEvent ){
-                object.attachEvent( name, callback );
+            $( object ).on( name, callback );
+        };
+
+        Events.unbind = function( name, callback, object ){
+            if( !object || !(object instanceof EventTarget) ){
+                object = document;
             }
-            else{
-                object.addEventListener( name, callback, false );
-            }
+
+            $( object ).off( name, callback );
         };
 
         Events.watch = function(){
@@ -33,16 +36,18 @@ define(
             });
         };
 
-        Events.fire = function( target, name, data, params ){
-            if( !params ){
-                params = {
-                    "bubbles": true
-                }
+        Events.fire = function( target, name, data ){
+            if( !data ){
+                data = {};
             }
 
-            var e = new Event( name, params );
-            e.data = data;
-            target.dispatchEvent( e );
+            if( data.type ){
+                throw new Error( "Data key cannot be 'type'" );
+            }
+            else{
+                data.type = name;
+                $( target ).trigger( data );
+            }
         };
 
         return Events;
