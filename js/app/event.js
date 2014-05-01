@@ -25,7 +25,7 @@ define(
         };
 
         Events.watch = function(){
-            _( myVU.config.events ).each( function( co ){
+            _( e ).each( function( co ){
                 require(
                     ["events/" + co],
                     function( c ){
