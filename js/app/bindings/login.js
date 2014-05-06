@@ -1,11 +1,11 @@
 define(
-    ["jquery", "event"],
-    function( $, Event ){
+    ["jquery"],
+    function( $ ){
         var LoginBinding = {};
 
         LoginBinding.home = function(){
             $( 'button[type="submit"]' ).on( "click", function( e ){
-                Event.fire( this, "omakase.click.login.home.authenticate" );
+                $( this ).trigger( "omakase.click.login.home.authenticate" );
                 return false;
             });
         };
