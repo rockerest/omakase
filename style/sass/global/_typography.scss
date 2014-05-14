@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 *{
-    color: $readingText;
+    color: inherit;
     font-family: 'Droid Sans', sans-serif;
 }
 
@@ -15,10 +15,19 @@ h2{
 
 h1, h2, h3, h4, h5, h6{
     text-align: center;
+    color: $primary;
+}
+
+label{
+    color: $primary;
+}
+
+a{
+    color: $complementary;
 }
 
 .highlight{
-    color: $highlightText;
+    color: $text-highlight;
 }
 
-@import "../../vendor/font-awesome/scss/font-awesome.scss";
+@import "../../../vendor/font-awesome/scss/font-awesome.scss";

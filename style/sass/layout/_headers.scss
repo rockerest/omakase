@@ -1,5 +1,5 @@
 header{
-    background-color: $highlightBackground;
+    background-color: $dark;
     padding: 1em;
     margin: auto auto 1.5em;
 
@@ -18,7 +18,8 @@ header{
 #logo-container{
     @include border-radius( 0.25em );
     padding: 0.5em 1em;
-    background-color: $darkBackground;
+    background-color: make-dull( $primary );
+    color: $text-on-dark;
 
     span, i{
         vertical-align: middle;
