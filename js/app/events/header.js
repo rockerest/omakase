@@ -1,16 +1,14 @@
 define(
-    ["jquery", "event"],
-    function( $, Event ){
+    ["jquery"],
+    function( $ ){
         var HeaderEvents = function(){};
 
-        HeaderEvents.prototype.registerEvents = function( binder ){
-            this.binder = binder;
-
+        HeaderEvents.prototype.registerEvents = function(){
             this.registerHeaderEvents();
         };
 
         HeaderEvents.prototype.registerHeaderEvents = function(){
-            this.binder( "omakase.click.header.logo", function( e ){
+            $( document ).on( "omakase.click.header.logo", function( e ){
                 window.location = "/#/";
             });
         };

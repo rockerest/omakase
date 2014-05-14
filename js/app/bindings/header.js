@@ -1,11 +1,11 @@
 define(
-    ["jquery", "event"],
-    function( $, Event ){
+    ["jquery"],
+    function( $ ){
         var HeaderBinding = {};
 
         HeaderBinding.header = function(){
             $( '#logo-container' ).on( "click", function( e ){
-                Event.fire( this, "omakase.click.header.logo" );
+                $( this ).trigger( "omakase.click.header.logo" );
                 return false;
             });
         };

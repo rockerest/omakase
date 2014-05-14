@@ -1,17 +1,15 @@
 define(
-    ["event", "jquery", "transfer", "security"],
-    function( Event, $, Transfer, Security ){
+    ["jquery", "transfer", "security"],
+    function( $, Transfer, Security ){
         var LoginEvents = function(){},
             Transfer = new Transfer();
 
-        LoginEvents.prototype.registerEvents = function( binder ){
-            this.binder = binder;
-
+        LoginEvents.prototype.registerEvents = function(){
             this.registerHomeEvents();
         };
 
         LoginEvents.prototype.registerHomeEvents = function(){
-            this.binder( "omakase.click.login.home.authenticate", function( e ){
+            $( document ).on( "omakase.click.login.home.authenticate", function( e ){
                 var clicked = e.target,
                     $clicked = $( clicked ),
                     credentials = {
